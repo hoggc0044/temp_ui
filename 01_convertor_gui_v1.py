@@ -4,6 +4,7 @@ from tkinter import *
 class Converter:
 
     def __init__(self):
+
         # common format for all the buttons
         # Arial size 14 bold, with white text
         button_font = ("Arial", "13", "bold")
@@ -34,7 +35,7 @@ class Converter:
         self.temp_entry.grid(row=2, padx=10, pady=10)
 
         error = "Please enter a number, or we will demand freedom!"
-        self.temp_error = Label(self.temp_frame, text=error,
+        self.temp_error = Label(self.temp_frame, text="error",
                                 fg="#9C0000")
         self.temp_error.grid(row=3)
 
@@ -46,7 +47,8 @@ class Converter:
                                         text="To Celsius",
                                         bg="#990099",
                                         fg=button_fg,
-                                        font=button_font, width=12)
+                                        font=button_font, width=12,
+                                        command=self.to_celsius)
         self.to_celsius_button.grid(row=0, column=0, padx=5, pady=5)
 
         self.to_fahrenheit_button = Button(self.button_frame,
@@ -70,6 +72,30 @@ class Converter:
                                      font=button_font, width=12,
                                         state=DISABLED)
         self.to_history_button.grid(row=1, column=1, padx=5, pady=5)
+
+
+    def check_temp(self, min_value):
+        error = "Please enter a number that is more " \
+                "than {}".format(min_value)
+
+        try:
+            response = self.temp_entry.get()
+            response = float(response)
+
+            if response < min_value:
+                self.temp_error.config(text=error)
+            else:
+                return response
+
+        except ValueError:
+            self.temp_error.config(text=error)
+
+    # checks temperature to see if more than -459 and then converts it
+    def to_celsius(self):
+
+        self.check_temp(-459)
+        print("you pushed celsius")
+
 
 # main routine
 if __name__ == "__main__":
