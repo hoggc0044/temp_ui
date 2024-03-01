@@ -192,7 +192,7 @@ class DisplayHelp:
         self.help_box = Toplevel()
 
         # disable help button
-        partner.to_help_button.config(state=DISABLED)
+        partner.to_history_button.config(state=DISABLED)
 
         # If users press cross at the top, that will close the help button and realase it
         self.help_box.protocol('WM_DELETE_WINDOW',
@@ -230,7 +230,7 @@ class DisplayHelp:
 
     def close_help(self, partner):
         # Put help button back to normal...
-        partner.to_help_button.config(state=NORMAL)
+        partner.to_history_button.config(state=NORMAL)
         self.help_box.destroy()
 
 
