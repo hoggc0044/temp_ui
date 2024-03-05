@@ -15,6 +15,8 @@ while get_item != "xxx":
 
     all_calculations.append(get_item)
 
+all_calculations.reverse()
+
 print()
 
 # Show that everything made it to the list...
