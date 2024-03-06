@@ -11,14 +11,15 @@ class Converter:
         button_fg = "#FFFFFF"
 
         # Five item list
-        # self.all_calculations = ['0 F° is -18 C°', '0 C° is 32 F°',
-        #                          '30 F° is -1 C°', '0 C° is 86 F°',
-        #                          '40 F° is -4 C°']
-
-        # Six item list
         self.all_calculations = ['0 F° is -18 C°', '0 C° is 32 F°',
                                  '30 F° is -1 C°', '0 C° is 86 F°',
-                                 '40 F° is -4 C°', '100 C° is 212 C°']
+                                 '40 F° is -4 C°']
+
+        # Six item list
+        # self.all_calculations = ['0 F° is -18 C°', '0 C° is 32 F°',
+        #                          '30 F° is -1 C°', '0 C° is 86 F°',
+        #                          '30 F° is -1 C°', '0 C° is 86 F°',
+        #                          '40 F° is -4 C°', '100 C° is 212 C°']
 
         # Set up GUI Frame
         self.temp_frame = Frame(padx=10, pady=10)
@@ -82,16 +83,18 @@ class HistoryExport:
 
         if num_calcs > max_calcs:
             calc_background = "#FFE6CC"  # something
+            calc_fg = "#000000"
             showing_all = "Here are your recent calculations " \
                           "({}/{} calculations shown). Please export your " \
                           "calculations to see your full calculation " \
                           "history.".format(max_calcs, num_calcs)
 
         else:
-            calc_background = "#B4FACB"  # yeet
+            calc_background = "#0000ff"  # yeet
+            calc_fg = "#FFFFFF"
             showing_all = "Below is your calculation history."
 
-        history_text = f"{showing_all} \n\nAll calculations are shwon to the nearest degree."
+        history_text = f"{showing_all} \n\nAll calculations are shown to the nearest degree."
 
         self.text_instructions_label = Label(self.history_frame,
                                              text=history_text, wraplength=300,
@@ -102,8 +105,8 @@ class HistoryExport:
         self.all_cacls_label = Label(self.history_frame,
                                      text=calc_string_text,
                                      justify="left", width=40,
-                                     fg="#FFFFFF",
-                                     padx=10, pady=10, bg="#006deb",
+                                     fg=calc_fg,
+                                     padx=10, pady=10, bg=calc_background,
                                      font=("Arial", "12", "bold"))
         self.all_cacls_label.grid(row=2)
 
